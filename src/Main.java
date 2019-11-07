@@ -19,15 +19,34 @@ public class Main {
             arvoreAVLParaCpf.insertByCpf(i, pessoas);
             arvoreAVLParaNome.insertByNome(i, pessoas);
         }
+
         List<AvlNode> resultadoDaPesquisa = arvoreAVLParaNome.searchByNome("g", pessoas);
 
-//        arvoreAVL.insert(2);
-//        arvoreAVL.insert(3);
-//        arvoreAVL.insert(1);
-//        arvoreAVL.insert(5);
-//        arvoreAVL.insert(4);
         Scanner scanner = new Scanner(System.in) ;
-        scanner.nextLine();
+        String entradaDeComando ;
+        System.out.println("Arquivo lido com sucesso! Deseja pesquisar no arquivo?");
+        System.out.println("1 - Por CPF \n 2 - Por nome \n 3 - Por intervalo de data");
+        System.out.println("Digite o numero correspondente:");
+        entradaDeComando = scanner.nextLine();
+
+        String entradaDePesquisa;
+
+        if(entradaDeComando  == "1"){
+            System.out.println("Digite o cpf:");
+            entradaDePesquisa = scanner.nextLine();
+        } else if(entradaDeComando.equals("2")){
+            System.out.println("Digite o nome:");
+            entradaDePesquisa = scanner.next();
+            List<AvlNode> nodosDeNomes = arvoreAVLParaNome.searchByNome(entradaDePesquisa, pessoas);
+            for (AvlNode nodoDeNome : nodosDeNomes){
+                Pessoa pessoa = pessoas.get(nodoDeNome.key);
+                System.out.println(pessoa.getNome());
+            }
+
+        } else if (entradaDeComando  == "3"){
+
+        } else System.out.println("Digite uma entrada válida!");
+
 
 
     }

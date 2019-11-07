@@ -31,23 +31,39 @@ public class Main {
 
         String entradaDePesquisa;
 
-        if(entradaDeComando  == "1"){
+        if(entradaDeComando.equals("1")){
             System.out.println("Digite o cpf:");
             entradaDePesquisa = scanner.nextLine();
+            long cpf = Long.parseLong(entradaDePesquisa);
+            AvlNode nodoDeCpf = arvoreAVLParaCpf.searchByCpf(cpf, pessoas);
+            Pessoa pessoa = pessoas.get(nodoDeCpf.key);
+            imprimiDadosDaPessoa(pessoa);
+
+
         } else if(entradaDeComando.equals("2")){
             System.out.println("Digite o nome:");
             entradaDePesquisa = scanner.next();
             List<AvlNode> nodosDeNomes = arvoreAVLParaNome.searchByNome(entradaDePesquisa, pessoas);
             for (AvlNode nodoDeNome : nodosDeNomes){
                 Pessoa pessoa = pessoas.get(nodoDeNome.key);
-                System.out.println(pessoa.getNome());
+                imprimiDadosDaPessoa(pessoa);
             }
 
-        } else if (entradaDeComando  == "3"){
+        } else if (entradaDeComando.equals("3")){
 
         } else System.out.println("Digite uma entrada válida!");
 
 
 
+    }
+
+    private static void imprimiDadosDaPessoa(Pessoa pessoa) {
+        System.out.println("------------------------------------------");
+        System.out.println("Nome: "+ pessoa.getNome());
+        System.out.println("CPF:" + pessoa.getCpf());
+        System.out.println("Cidade:" + pessoa.getCidade());
+        System.out.println("RG:" + pessoa.getRg());
+        System.out.println("Data de nascimento:" + pessoa.getDataDeNascimento());
+        System.out.println("------------------------------------------");
     }
 }

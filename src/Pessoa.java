@@ -4,10 +4,10 @@ public class Pessoa {
     private long cpf;
     private long rg;
     private String nome;
-    private String  dataDeNascimento;
+    private LocalDate dataDeNascimento;
     private String cidade;
 
-    public Pessoa(long cpf, long rg, String nome, String dataDeNascimento, String cidade) {
+    public Pessoa(long cpf, long rg, String nome, LocalDate dataDeNascimento, String cidade) {
         this.cpf = cpf;
         this.rg = rg;
         this.nome = nome;
@@ -39,11 +39,11 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public String getDataDeNascimento() {
+    public LocalDate getDataDeNascimento() {
         return dataDeNascimento;
     }
 
-    public void setDataDeNascimento(String dataDeNascimento) {
+    public void setDataDeNascimento(LocalDate dataDeNascimento) {
         this.dataDeNascimento = dataDeNascimento;
     }
 
